@@ -128,6 +128,7 @@
       window.SonarPlaylist.highlight(index);
       if (!track) return;
       titleEl.textContent = track.title;
+      titleEl.title = track.title;
       const bits = [];
       if (track.duration) bits.push(window.SonarPlaylist.fmtTime(track.duration));
       if (track.fileName && track.fileName !== track.title) bits.push(track.fileName);

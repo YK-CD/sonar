@@ -51,6 +51,7 @@
       const title = document.createElement('span');
       title.className = 'title';
       title.textContent = t.title;
+      title.title = t.title;
 
       const dur = document.createElement('span');
       dur.className = 'dur';
