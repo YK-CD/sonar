@@ -1,0 +1,36 @@
+/* sonar — 5 temas de cor */
+
+:root {
+  --bg: #0b0f14;
+  --bg-panel: #0e141b;
+  --fg: #c8d1d9;
+  --dim: #6b7a88;
+  --danger: #ff5f56;
+  --accent: #5fff87;
+  --accent-rgb: 95, 255, 135;
+}
+
+[data-theme="red"] {
+  --accent: #ff5f56;
+  --accent-rgb: 255, 95, 86;
+}
+
+[data-theme="blue"] {
+  --accent: #56c8ff;
+  --accent-rgb: 86, 200, 255;
+}
+
+[data-theme="yellow"] {
+  --accent: #ffd75f;
+  --accent-rgb: 255, 215, 95;
+}
+
+[data-theme="green"] {
+  --accent: #5fff87;
+  --accent-rgb: 95, 255, 135;
+}
+
+[data-theme="purple"] {
+  --accent: #c792ea;
+  --accent-rgb: 199, 146, 234;
+}

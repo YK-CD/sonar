@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="green">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>sonar — player</title>
+  <link rel="stylesheet" href="css/themes.css">
+  <link rel="stylesheet" href="css/base.css">
+</head>
+<body>
+  <div class="crt">
+    <header class="top">
+      <pre class="logo">  ____   ___  _   _    _    ____
+ / ___| / _ \| \ | |  / \  |  _ \
+ \___ \| | | |  \| | / _ \ | |_) |
+  ___) | |_| | |\  |/ ___ \|  _ <
+ |____/ \___/|_| \_/_/   \_\_| \_\</pre>
+      <div class="sysline">
+        <span class="prompt">sonar@wav ~$</span>
+        <span id="status">inicializando...</span>
+        <span id="clock" class="clock"></span>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="panel playlist-panel">
+        <div class="panel-title">┌─ PLAYLIST <span id="track-count" class="count">[0]</span></div>
+        <div class="panel-actions">
+          <button id="btn-add-files" class="tbtn" title="adicionar arquivos de áudio">[+ ARQUIVO]</button>
+          <button id="btn-add-folder" class="tbtn" title="adicionar pasta inteira">[+ PASTA]</button>
+          <button id="btn-clear" class="tbtn danger" title="limpar biblioteca">[LIMPAR]</button>
+        </div>
+        <ul id="playlist" class="playlist"></ul>
+        <div class="panel-foot">└─ <span id="playlist-hint">aguardando entrada de áudio</span></div>
+        <input type="file" id="file-input" accept="audio/*,.mp3,.ogg,.wav,.flac,.m4a,.aac,.opus" multiple hidden>
+        <input type="file" id="folder-input" webkitdirectory multiple hidden>
+      </section>
+
+      <section class="panel now-panel">
+        <div class="panel-title">┌─ NOW PLAYING</div>
+
+        <pre id="cover-ascii" class="cover-ascii"></pre>
+
+        <div class="now-info">
+          <div id="track-title" class="track-title">— nada tocando —</div>
+          <div id="track-meta" class="track-meta"></div>
+        </div>
+
+        <canvas id="visualizer" class="visualizer" height="64"></canvas>
+
+        <div class="progress">
+          <span id="time-cur" class="time">0:00</span>
+          <input type="range" id="seek" class="range" min="0" max="1000" value="0" step="1">
+          <span id="time-dur" class="time">0:00</span>
+        </div>
+
+        <div class="controls">
+          <button id="btn-prev" class="tbtn big" title="anterior">◄◄</button>
+          <button id="btn-play" class="tbtn big primary" title="play/pause (espaço)">▶</button>
+          <button id="btn-next" class="tbtn big" title="próxima">►►</button>
+        </div>
+
+        <div class="volume">
+          <span class="vol-label">VOL</span>
+          <input type="range" id="volume" class="range" min="0" max="1" step="0.01" value="0.8">
+          <span id="vol-value" class="time">80%</span>
+        </div>
+
+        <div class="panel-foot">└─ <span id="now-hint">espaço = play/pause</span></div>
+      </section>
+    </main>
+
+    <footer class="statusbar">
+      <div class="themes">
+        <span class="themes-label">TEMA:</span>
+        <button class="tbtn theme-btn" data-theme-btn="red">[RED]</button>
+        <button class="tbtn theme-btn" data-theme-btn="blue">[BLUE]</button>
+        <button class="tbtn theme-btn" data-theme-btn="yellow">[YELLOW]</button>
+        <button class="tbtn theme-btn" data-theme-btn="green">[GREEN]</button>
+        <button class="tbtn theme-btn" data-theme-btn="purple">[PURPLE]</button>
+      </div>
+      <div class="hints">ESPAÇO=play/pause &nbsp; ←/→=±10s &nbsp; ↑/↓=volume</div>
+    </footer>
+  </div>
+
+  <audio id="audio" preload="auto"></audio>
+
+  <script src="vendor/jsmediatags.min.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/themes.js"></script>
+  <script src="js/cover-ascii.js"></script>
+  <script src="js/visualizer.js"></script>
+  <script src="js/player.js"></script>
+  <script src="js/playlist.js"></script>
+  <script src="js/importer.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
